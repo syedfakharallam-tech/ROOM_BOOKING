@@ -1,0 +1,604 @@
+<html>
+    <!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width ,  initial-scale=1.0">
+        <title>Hotel Booking</title>
+        <style>
+        /*------------------body------------------*/
+        html{
+            scroll-behavior:smooth;
+        }
+        body{
+            scroll-behavior:smooth;
+            padding-top: 100px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            margin:0;
+            background-color: rgb(241, 240, 240);
+            display: flex;
+            flex-direction: column;
+        }
+        /*------------------header------------------*/
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color:rgb(53, 1, 1);
+            width: 100%;
+            height: 100px; 
+            display: flex;
+            z-index: 1000;
+            
+        }
+        header h1{
+            margin: 30px;
+            color: white;
+        }
+        nav{
+           display: flex;
+           align-items: center;
+           gap: 25px;
+           margin-left: auto;
+           margin-right: 5%;
+        }
+        a{
+            font-weight: lighter;
+            text-decoration: none;
+            color: white;
+            padding: 8px;
+            border-bottom: 1.5px solid transparent;
+            border-radius: 15px;
+            transition: 0.5s;
+        }
+          
+        a:hover{
+            color: #A85432;
+            border-color: #A85432;
+        }
+        #book-now{
+            border: 1.5px solid  #A85432;
+        }
+        #book-now:hover{
+            background-color: #A85432;
+            color: white;
+        }
+            
+        /*------------------homepage------------------*/      
+        #home{
+            scroll-margin-top: 100px;
+            width: 100%;
+            height: 700px;
+            margin: 0;
+            background-image:url(bg-img.jpg);
+            background-size:cover ;
+            background-position: center;
+        }
+            
+        #homepage{
+            width: 100%;
+            height: 700px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            place-items: center;
+            flex-direction: column;
+        }
+        #homepage h1{
+            font-family: 'Times New Roman', Times, serif;
+            transform: scale(1.5);
+        }
+        #desc{
+            font-size: 20px;
+            font-weight: lighter;
+            padding: 10px;
+        }
+        
+        /*------------------room cards------------------*/
+        #rooms{
+            scroll-margin-top:100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #rooms h1{
+            margin: 40px;
+            font-weight: lighter;
+            padding: 10px;
+            border-bottom: 2px solid #A85432;
+        }
+        #room-cards{
+            display:flex;
+            flex-wrap: wrap;
+
+        }
+        #room-card{
+            margin: 2%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 10px;
+        }
+        #room-card div{
+            margin-bottom: 30px;
+            font-weight: lighter;
+            color: gray;
+        }
+        #img-box{
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 350px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .room-img{
+            object-fit: cover;
+            width: 350px;
+            height: 200px;
+            transition: 0.5s;
+        }
+        .room-img:hover{
+            transform: scale(1.05);
+            border: none;
+        }
+        #room-card h4{
+            margin:0px;
+            font-weight: lighter;
+        }
+        #room-card button{
+            all: initial;
+            color: #A85432;
+            background-color: white;
+            padding: 5px 20px;
+            border: 2px solid #A85432;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin-bottom: 15px;
+            margin-top: 0px;
+            cursor: pointer;
+
+        }
+        #room-card button:hover{
+            color: white;
+            background-color: #A85432;
+        }
+            /*------------------booking form------------------*/
+        
+        #booking{
+            scroll-margin-top:100px;
+            width: 100%;
+            background-color: white;
+            display: flex;
+        }
+        #discription{
+            width: 50%;
+            padding: 50px;
+            margin: 20px;
+        }
+        #booking-form{
+            width: 50%;
+            background-color: white;
+            padding: 30px;
+            margin: 30px;
+            display: flex;
+            flex-direction: column;
+
+        }
+        
+        
+        /*------------------Contact form------------------*/        
+        #contact{
+            scroll-margin-top:100px;
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+            background-color: white;
+        }
+        #contact-form{
+            width: 50%;
+            padding: 30px;
+            margin: 5px 40px;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        
+        
+        #contact-info{
+            width: 50%;
+            margin: 5px 40px;
+            padding: 30px;
+
+        }
+        
+
+        /*------------------Payment Method------------------*/
+        #payment-section{
+            scroll-margin-top:100px;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            margin-top: 20px;
+            padding: 20px 0;
+        }
+        #payment{
+            padding:30px;
+            margin:5px 40px;
+            background-color: white;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #payment-form{
+            display: flex;
+            flex-direction: column;
+            width:100%;
+        }
+        #payment-form-desc{
+            padding:30px;
+            margin-left: 20px;
+            width:50%
+        }
+       
+        
+        #exp-cvc{
+            width: 100%;
+            display: flex;
+            gap: 30px;
+        }
+       
+        #exp,#cvc{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+        
+
+        #c-zip{
+            width: 100%;
+            display: flex;
+            gap: 30px;
+        }
+        #country , #zip{
+            display: flex;
+            flex-direction: column;
+            width:50%;
+        }
+        h2{
+            color:#A85432
+        }
+        /*-------------------INPUT---------------------*/
+        input,textarea, select{
+            all: unset;
+            width: 100%;
+            padding: 12px;
+            margin:5px 0;
+            border:1.5px solid transparent;
+            border-bottom:1.5px solid lightgray;
+            border-radius: 5px;
+            transition: 0.3s;
+            color: transparent;
+        }
+        select,input[type="date"]{
+            cursor:pointer;
+        }
+        input:focus,textarea:focus, select:focus,
+        input:valid,textarea:valid, select:valid{
+            color:black;
+            border:1.5px solid lightgray;
+        }
+        #input-box{
+            position: relative;
+        }
+        label{
+            position: absolute;
+            left:12px;
+            top:50%;
+            transform: translateY(-50%);
+            padding: 0 5px;
+            color: gray;
+            transition: all 0.4s ease;
+        }
+        label.messege{
+            top:20%;
+        }
+        
+        #input:focus+label,
+        #input:valid+label{
+            background-color: white;
+            top:5px;
+            font-size: 14px;
+            color:#A85432;
+            box-shadow: 0 0 3px white;
+
+        }
+        /*-------------button---------------*/
+        .button{
+            width:100%;
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            color: #A85432;
+            background-color: white;
+            padding: 10px 20px;
+            border: 2px solid #A85432;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            cursor:pointer;
+        }
+        button:hover{
+            background-color: #A85432;
+            color: white;
+            box-shadow: 0 0 5px #A85432;
+
+        }
+        
+        
+
+        
+        
+    </style>
+    </head>
+    <body>
+        <!---------------Header---------------------->
+        <header>
+            <h1>Hotel Booking</h1>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#rooms">Rooms</a>
+                <a href="#payment-section">Payment</a>
+                <a href="#contact">Contact</a>
+                <a href="#rooms" id="book-now">Book Now</a>
+            </nav>
+        </header>
+        <!---------------Home Page---------------------->
+        <section id="home">
+            <div id="homepage">
+                <h1>Unique Experience</h1>
+                <div id="desc">Enjoy with us</div>
+            </div>
+        </section>
+        <!---------------Rooms---------------------->
+        <section id="rooms">
+            <h1>Available Rooms</h1>
+            <div id="room-cards">
+                <div id="room-card">
+                    <div id="img-box">
+                        <img
+                            src="room (1).jpg"
+                            class="room-img">
+                    </div>
+                    <h4>STANDARD ROOM</h4>
+                    <div>300.00$ / per night</div>
+                    <button class="book-btn">Book now</button>
+                </div>
+                <div id="room-card">
+                    <div id="img-box">
+
+                        <img
+                            src="room (2).jpg"
+                            class="room-img">
+                    </div>
+
+                    <h4>FAMILY ROOM</h4>
+                    <div>350.00$ / per night</div>
+                    <button class="book-btn">Book now</button>
+                </div>
+                <div id="room-card">
+                    <div id="img-box">
+
+                        <img
+                            src="room (3).jpg"
+                            class="room-img">
+                    </div>
+                    <h4>DELUXE ROOM</h4>
+                    <div>400.00$ / per night</div>
+                    <button class="book-btn">Book now</button>
+                </div>
+                <div id="room-card">
+                    <div id="img-box">
+
+                        <img
+                            src="room (4).jpg"
+                            class="room-img">
+                    </div>
+                    <h4>LUXURY ROOM</h4>
+                    <div>450.00$ / per night</div>
+                    <button class="book-btn">Book now</button>
+                </div>
+                <div id="room-card">
+                    <div id="img-box">
+
+                        <img
+                            src="room (5).jpg"
+                            class="room-img">
+                    </div>
+                    <h4>SINGLE ROOM</h4>
+                    <div>500.00$ / per night</div>
+                    <button class="book-btn">Book now</button>
+                </div>
+            </div>
+        </section>
+        <!---------------Booking Form---------------------->
+        <section id="booking">
+            <form id="booking-form">
+                <h2>Book A Room</h2>
+                <div id="input-box">
+                    <input type="date" id="input" required>
+                    <label for="input">Check In</label>
+                </div>
+                <div id="input-box">
+                    <input type="date" id="input" required>
+                    <label for="input">Check Out</label>
+                </div>
+                <div id="input-box">
+                    <select id="input"  required>
+                        <option value="" selected disabled>Select</option>
+                        <option>Room One</option>
+                        <option>Room Two</option>
+                        <option>Room Three</option>
+                        <option>Room Four</option>
+                        <option>Room Five</option>
+                    </select>
+                    <label for="input"> Rooms</label>
+                </div>
+                <div id="input-box">
+                    <select id="input"  required>
+                        <option value="" selected disabled>Select</option>
+                        <option>Guest One</option>
+                        <option>Guest Two</option>
+                        <option>Guest Three</option>
+                        <option>Guest Four</option>
+                        <option>Guest Five</option>
+                    </select>
+                    <label for="input"> Guests</label>
+                </div>
+                <div class="button">
+                    <button value="submit">Book Now</button>
+                </div>
+            </form>
+            <div id="discription">
+                <div>
+                    <h2>Comfortable Stay, Easy Booking</h2>
+                    <div>Enjoy clean, cozy rooms with modern amenities, free
+                        Wi-Fi,
+                        and a peaceful environment. Book your stay now and
+                        experience comfort at the best price.</div>
+                </div>
+            </div>
+
+        </section>
+        <!---------------Payment method---------------------->
+        <section id="payment-section">
+            <div id="payment">
+                <h2>Payment Method</h2>
+                <form id="payment-form">
+                    <div>
+                        <div id="input-box">
+                            <input type="email" id="input" required>
+                            <label for="input">Email</label>
+                        </div>
+                        <div id="input-box">
+                            <input type="text" id="input" required>
+                            <label for="input">AccountNumber</label>
+                        </div>
+                        <div id="exp-cvc">
+                            <div id="exp">
+                                <div id="input-box"><input type="date"
+                                        id="input"
+                                        required><label for="input">Expiry
+                                        Date</label>
+                                </div>
+
+                            </div>
+                            <div id="cvc">
+                                <div id="input-box">
+                                    <input type="password" id="input"
+                                        maxlength="3" required>
+                                    <label for="input">CVC</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="c-zip">
+                            <div id="country">
+                                <div id="input-box">
+
+                                    <select id="input" required>
+                                        <option value selected
+                                            disabled>Select</option>
+                                        <option>USA</option>
+                                        <option>Canada</option>
+                                        <option>China</option>
+                                        <option>France</option>
+                                        <option>Greece</option>
+                                    </select>
+                                    <label for="input">Country</label>
+                                </div>
+                            </div>
+                            <div id="zip">
+                                <div id="input-box">
+                                    <input type="text" id="input" required>
+                                    <label for="input">ZIP</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="button">
+                        <button>Confirm Payment</button>
+                    </div>
+                </form>
+            </div>
+            <div id="payment-form-desc">
+                <h2>Payment Options</h2>
+                <div>Secure and simple payment methods. Choose your
+                    preferred
+                    option
+                    and complete your booking safely in just a few
+                    clicks.</div>
+            </div>
+        </section>
+        <!---------------Contact---------------------->
+        <section id="contact">
+
+            <div id="contact-info">
+                <h2>Contact info</h2>
+                <h3>Address</h3>
+                <div>Street-48, I-14/3 Sector, Islamabad, Pakistam </div>
+                <h3>Phone</h3>
+                <div>+92 305 4891942</div>
+                <h3>Email Address</h3>
+                <div>Syedfakharallam@gmail.com</div>
+            </div>
+            <form id="contact-form">
+                <div id="input-box">
+                    <input type="text" id="input" required>
+                    <label for="input">Name</label>
+                </div>
+                <div id="input-box">
+                    <input type="text" id="input" required>
+                    <label for="input">Email</label>
+                </div>
+                <div id="input-box">
+                    <input type="text" id="input" required>
+                    <label for="input">Phone</label>
+                </div>
+                <div id="input-box">
+                    <textarea id="input" rows="5" cols="15"
+                        required></textarea>
+                    <label for="input" class="messege">Messege</label>
+                </div>
+                <div class="button">
+                    <button value="submit">Send Messege</button>
+                </div>
+            </form>
+        </section>
+        <!---------JAVA------------>
+        <script>
+            const book_btns=document.getElementsByClassName("book-btn");
+            
+            for(let i=0;i<book_btns.length;i++){
+                book_btns[i].addEventListener("click",function(){
+                    document.getElementById("booking").scrollIntoView({behavior:"smooth"});
+                });
+            }
+            const buttons=document.getElementsByClassName("button");
+            for(let i=0;i<buttons.length;i++){
+                const btn=buttons[i].querySelector("button");
+                const form=btn.closest("form");
+                btn.addEventListener("click",function(e){
+                    if(!form.checkValidity()){
+                        return;
+                    }
+                    e.preventDefault();
+                    alert("Form Submitted!");
+
+                });
+            }
+        </script>
+    </body>
+</html>
